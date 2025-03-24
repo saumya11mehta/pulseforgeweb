@@ -11,7 +11,7 @@ export default function Features() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-primary text-primary-on py-12 md:py-16 lg:py-20">
+      <section className="bg-gradient-to-b from-primary to-secondary text-primary-on py-12 md:py-16 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4">Powerful Features</h1>
           <p className="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto px-2">

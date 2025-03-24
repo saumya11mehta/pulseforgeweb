@@ -12,7 +12,7 @@ export default function TermsOfService() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-secondary text-primary-on py-16">
+      <section className="bg-gradient-to-b from-primary to-secondary text-primary-on py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl md:text-5xl font-bold mb-4">Terms of Service</h1>
           <p className="text-xl md:text-2xl max-w-3xl mx-auto">
