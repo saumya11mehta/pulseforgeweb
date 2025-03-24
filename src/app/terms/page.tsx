@@ -73,8 +73,8 @@ export default function TermsOfService() {
               <p>
                 Your privacy is important to us. Our collection and use of personal information is governed by 
                 our Privacy Policy, available at{' '}
-                <a href="https://pulseforgeapp.com/privacy" className="text-primary hover:underline">
-                  https://pulseforgeapp.com/privacy
+                <a href="https://pulseforgeapp.com/privacy-policy" className="text-primary hover:underline">
+                  https://pulseforgeapp.com/privacy-policy
                 </a>.
               </p>
             </section>
