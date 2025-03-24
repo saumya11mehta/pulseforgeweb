@@ -39,9 +39,6 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-primary-on font-medium">
-              Home
-            </Link>
             <Link href="/features" className="text-primary-on font-medium">
               Features
             </Link>
@@ -107,13 +104,6 @@ const Header = () => {
               </button>
             </div>
             <nav className="flex-1 px-4 py-6 space-y-4">
-              <Link 
-                href="/" 
-                className="block text-lg text-primary-on font-medium py-2"
-                onClick={toggleMenu}
-              >
-                Home
-              </Link>
               <Link 
                 href="/features" 
                 className="block text-lg text-primary-on font-medium py-2"
