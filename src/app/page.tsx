@@ -1,103 +1,174 @@
 import Image from "next/image";
+import Button from '@/components/Button';
+import Card from '@/components/Card';
+import { FaChartBar, FaCalendarAlt, FaBullseye } from "react-icons/fa";
+import { GiWeightLiftingUp } from "react-icons/gi";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      {/* Hero Section */}
+      <section className="from-primary to-primary/50 bg-gradient-to-b text-primary-on py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+            <div className="md:w-1/2">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                Track Your Fitness Journey with PulseForge
+              </h1>
+              <p className="mt-4 text-lg md:text-xl text-primary-on/90">
+                The ultimate workout tracking companion that helps you achieve your fitness goals.
+                Monitor progress, analyze performance, and stay motivated.
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                <a href="#" className="inline-block">
+                  <Image
+                    src="/play/GetItOnGooglePlay_Badge_Web_color_English.png"
+                    alt="Get it on Google Play"
+                    width={180}
+                    height={53}
+                    className="hover:opacity-90 transition-opacity"
+                  />
+                </a>
+                <Button
+                  variant="primary"
+                  className="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-primary-on"
+                >
+                  Learn More
+                </Button>
+              </div>
+            </div>
+            <div className="md:w-1/2 flex justify-center">
+              <div className="relative w-64 h-[500px] md:w-72 md:h-[580px]">
+                <Image
+                  src="/screenshots/login-portrait.png"
+                  alt="PulseForge App Screenshot"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+      {/* Features Section */}
+      <section className="py-20 bg-surface">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-surface-on">
+              Why Choose PulseForge?
+            </h2>
+            <p className="mt-4 text-lg text-surface-on-variant">
+              Our app is designed to make your fitness journey easier, more effective, and more enjoyable.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {features.map((feature, index) => (
+              <Card 
+                key={index} 
+                className="p-8 hover:shadow-lg transition-shadow"
+              >
+                <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mb-6">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-semibold mb-3 text-surface-on">{feature.title}</h3>
+                <p className="text-surface-on-variant">{feature.description}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      {/* <section className="py-20 bg-surface">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-surface-on">
+              What Our Users Say
+            </h2>
+            <p className="mt-4 text-lg text-surface-on-variant">
+              Thousands of fitness enthusiasts trust PulseForge for their workout tracking needs.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <Card 
+                key={index} 
+                className="p-8 border border-outline"
+              >
+                <div className="flex items-center mb-4">
+                  <div className="flex text-primary">
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i}>★</span>
+                    ))}
+                  </div>
+                </div>
+                <p className="text-surface-on-variant mb-6">&ldquo;{testimonial.text}&rdquo;</p>
+                <div className="flex items-center">
+                  <div className="w-10 h-10 bg-surface rounded-full overflow-hidden">
+                    <Image
+                      src={testimonial.avatar}
+                      alt={testimonial.name}
+                      width={40}
+                      height={40}
+                    />
+                  </div>
+                  <div className="ml-3">
+                    <h4 className="font-medium text-surface-on">{testimonial.name}</h4>
+                    <p className="text-sm text-surface-on-variant">{testimonial.title}</p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section> */}
+
+      {/* CTA Section */}
+      <section className="py-20 from-primary/50 to-primary bg-gradient-to-b text-primary-on">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold">Ready to Transform Your Workouts?</h2>
+          <p className="mt-4 text-xl text-primary-on/80 max-w-2xl mx-auto">
+            Join thousands of fitness enthusiasts who have taken their training to the next level with PulseForge.
+          </p>
+          <a href="#" className="inline-block mt-8">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/play/GetItOnGooglePlay_Badge_Web_color_English.png"
+              alt="Get it on Google Play"
+              width={180}
+              height={53}
+              className="hover:opacity-90 transition-opacity"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+    </>
   );
 }
+
+const features = [
+  {
+    icon: <FaChartBar size={24} className="text-primary" />,
+    title: 'Advanced Analytics',
+    description: 'Track your progress with detailed charts and insights that help you understand your performance over time.',
+  },
+  {
+    icon: <FaCalendarAlt size={24} className="text-primary" />,
+    title: 'Workout Planning',
+    description: 'Plan your workouts in advance with our intuitive calendar and scheduling tools.',
+  },
+  {
+    icon: <FaBullseye size={24} className="text-primary" />,
+    title: 'Goal Setting',
+    description: 'Set personalized fitness goals and track your journey to achieving them.',
+  },
+  {
+    icon: <GiWeightLiftingUp size={24} className="text-primary" />,
+    title: 'Detailed Exercise Library',
+    description: 'Access a comprehensive library of exercises with proper form instructions.',
+  },
+];
+
