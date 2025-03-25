@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     question: "How do I track my workouts?",
-    answer: "After downloading PulseForge, you can track your workouts by selecting from our library of exercises or creating custom workout rotines. The app allows you to log sets, reps, weights, and rest times, and provides analytics to track your progress over time."
+    answer: "After downloading PulseForge, you can track your workouts by selecting from our library of exercises or creating custom workout routines. The app allows you to log sets, reps, weights, and rest times, and provides analytics to track your progress over time."
   },
   {
     question: "How does PulseForge protect my privacy?",
