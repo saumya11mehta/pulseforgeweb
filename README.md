@@ -49,6 +49,36 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - `src/app/` - Main application pages
 - `src/components/` - Reusable UI components
 - `public/` - Static assets like images and icons 
+- `scripts/` - Utility scripts for build and deployment
+
+## App-Ads.txt Generation
+
+The project includes automatic generation of the `app-ads.txt` file using environment variables. This file is required for app advertising platforms to verify the ownership of your app.
+
+### Configuration
+
+You can configure the app-ads.txt content in the `.env.local` file using either:
+
+1. A complete content string:
+```
+APP_ADS_CONTENT=google.com, pub-1234567890123456, DIRECT, f080187651473589
+```
+
+2. Individual components:
+```
+AD_NETWORK=google.com
+PUBLISHER_ID=pub-1234567890123456
+AD_RELATIONSHIP=DIRECT
+CERTIFICATION_AUTHORITY_ID=f080187651473589
+```
+
+### Generation
+
+The app-ads.txt file is automatically generated during the build process. You can also generate it manually:
+
+```bash
+npm run generate-app-ads
+```
 
 ## Technologies Used
 

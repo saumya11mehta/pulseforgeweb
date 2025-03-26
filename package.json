@@ -2,11 +2,13 @@
   "name": "pulseforgeweb",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/generate-app-ads.js && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-app-ads": "node scripts/generate-app-ads.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -14,6 +16,7 @@
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "autoprefixer": "^10.4.21",
+    "dotenv": "^16.4.7",
     "next": "15.2.3",
     "next-themes": "^0.4.6",
     "react": "^19.0.0",
