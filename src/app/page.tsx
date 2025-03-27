@@ -1,10 +1,17 @@
+'use client';
+
 import Image from "next/image";
 import Button from '@/components/Button';
 import Card from '@/components/Card';
 import { FaChartBar, FaCalendarAlt, FaBullseye } from "react-icons/fa";
 import { GiWeightLiftingUp } from "react-icons/gi";
+import ClosedBetaForm from '@/components/ClosedBetaForm';
+import { useState } from 'react';
+import Link from 'next/link';
 
 export default function Home() {
+  const [isBetaFormOpen, setIsBetaFormOpen] = useState(false);
+
   return (
     <>
       {/* Hero Section */}
@@ -20,21 +27,21 @@ export default function Home() {
                 Monitor progress, analyze performance, and stay motivated.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                <a href="#" className="inline-block">
-                  <Image
-                    src="/play/GetItOnGooglePlay_Badge_Web_color_English.png"
-                    alt="Get it on Google Play"
-                    width={180}
-                    height={53}
-                    className="hover:opacity-90 transition-opacity"
-                  />
-                </a>
                 <Button
                   variant="primary"
                   className="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-primary-on"
+                  onClick={() => setIsBetaFormOpen(true)}
                 >
-                  Learn More
+                  Apply for Closed Beta
                 </Button>
+                <Link href="/features">
+                  <Button
+                    variant="primary"
+                    className="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-primary-on"
+                  >
+                    Learn More
+                  </Button>
+                </Link>
               </div>
             </div>
             <div className="md:w-1/2 flex justify-center">
@@ -134,17 +141,21 @@ export default function Home() {
           <p className="mt-4 text-xl text-primary-on/80 max-w-2xl mx-auto">
             Join thousands of fitness enthusiasts who have taken their training to the next level with PulseForge.
           </p>
-          <a href="#" className="inline-block mt-8">
-            <Image
-              src="/play/GetItOnGooglePlay_Badge_Web_color_English.png"
-              alt="Get it on Google Play"
-              width={180}
-              height={53}
-              className="hover:opacity-90 transition-opacity"
-            />
-          </a>
+          <Button
+            variant="primary"
+            className="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-primary-on mt-8"
+            onClick={() => setIsBetaFormOpen(true)}
+          >
+            Apply for Closed Beta
+          </Button>
         </div>
       </section>
+
+      {/* Closed Beta Form Modal */}
+      <ClosedBetaForm 
+        isOpen={isBetaFormOpen} 
+        onClose={() => setIsBetaFormOpen(false)} 
+      />
     </>
   );
 }

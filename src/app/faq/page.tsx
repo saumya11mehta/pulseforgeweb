@@ -1,11 +1,9 @@
-import { Metadata } from "next";
+'use client';
+
 import Card from "@/components/Card";
 import Button from "@/components/Button";
-
-export const metadata: Metadata = {
-  title: "FAQ - PulseForge",
-  description: "Frequently asked questions about PulseForge fitness tracking app",
-};
+import ClosedBetaForm from '@/components/ClosedBetaForm';
+import { useState } from 'react';
 
 const faqs = [
   {
@@ -22,7 +20,7 @@ const faqs = [
   },
   {
     question: "How do I track my workouts?",
-    answer: "After downloading PulseForge, you can track your workouts by selecting from our library of exercises or creating custom workout routines. The app allows you to log sets, reps, weights, and rest times, and provides analytics to track your progress over time."
+    answer: "After downloading PulseForge, you can track your workouts by creating custom workout routines and selecting from our library of exercises or by adding your own exercises. The app allows you to log sets, reps, weights, and rest times, and provides analytics to track your progress over time."
   },
   {
     question: "How does PulseForge protect my privacy?",
@@ -35,6 +33,8 @@ const faqs = [
 ];
 
 export default function FAQ() {
+  const [isBetaFormOpen, setIsBetaFormOpen] = useState(false);
+
   return (
     <div className="bg-background min-h-screen">
       <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -77,12 +77,19 @@ export default function FAQ() {
             <Button 
               variant="secondary"
               className="inline-flex items-center justify-center px-8 py-3 rounded-full shadow-lg"
+              onClick={() => setIsBetaFormOpen(true)}
             >
-              Download PulseForge
+              Apply for Closed Beta
             </Button>
           </div>
         </div>
       </section>
+
+      {/* Closed Beta Form Modal */}
+      <ClosedBetaForm 
+        isOpen={isBetaFormOpen} 
+        onClose={() => setIsBetaFormOpen(false)} 
+      />
     </div>
   );
 } 

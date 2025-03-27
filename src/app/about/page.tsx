@@ -1,13 +1,14 @@
-import { Metadata } from 'next';
+'use client';
+
 import Image from 'next/image';
 import Card from '../../components/Card';
-
-export const metadata: Metadata = {
-  title: 'About Us | PulseForge',
-  description: 'Learn about the team behind PulseForge, the ultimate workout tracking application.',
-};
+import Button from '@/components/Button';
+import ClosedBetaForm from '@/components/ClosedBetaForm';
+import { useState } from 'react';
 
 export default function About() {
+  const [isBetaFormOpen, setIsBetaFormOpen] = useState(false);
+
   return (
     <>
       {/* Hero Section */}
@@ -17,6 +18,15 @@ export default function About() {
           <p className="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto px-2">
             Our mission is to make fitness tracking simple, insightful, and motivating.
           </p>
+          <div className="mt-8">
+            <Button
+              variant="primary"
+              className="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-primary-on"
+              onClick={() => setIsBetaFormOpen(true)}
+            >
+              Apply for Closed Beta
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -87,24 +97,11 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-12 md:py-16 bg-primary text-primary-on">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4 md:mb-6">Join the PulseForge Community</h2>
-          <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-6 md:mb-8">
-            Download the app today and start your fitness journey with us.
-          </p>
-          <a href="#" className="inline-block">
-            <Image
-              src="/play/GetItOnGooglePlay_Badge_Web_color_English.png"
-              alt="Get it on Google Play"
-              width={160}
-              height={47}
-              className="hover:opacity-90 transition-opacity"
-            />
-          </a>
-        </div>
-      </section>
+      {/* Closed Beta Form Modal */}
+      <ClosedBetaForm 
+        isOpen={isBetaFormOpen} 
+        onClose={() => setIsBetaFormOpen(false)} 
+      />
     </>
   );
 }

@@ -1,12 +1,10 @@
-import { Metadata } from "next";
+'use client';
+
 import Card from "@/components/Card";
 import Button from "@/components/Button";
 import { CheckIcon } from "@heroicons/react/24/outline";
-
-export const metadata: Metadata = {
-  title: "Pricing - PulseForge",
-  description: "Simple, transparent pricing plans for PulseForge fitness tracking app",
-};
+import ClosedBetaForm from '@/components/ClosedBetaForm';
+import { useState } from 'react';
 
 const plans = [
   {
@@ -19,7 +17,7 @@ const plans = [
       "Personal records tracking",
       "In-depth analytics with graphs",
     ],
-    buttonText: "Download Now",
+    buttonText: "Apply for Beta",
     isPopular: false,
     buttonVariant: "secondary" as const
   },
@@ -35,7 +33,7 @@ const plans = [
       "In-depth analytics with graphs",
       "No ads",
     ],
-    buttonText: "Get Premium",
+    buttonText: "Apply for Beta",
     isPopular: true,
     buttonVariant: "primary" as const
   },
@@ -59,6 +57,8 @@ const plans = [
 ];
 
 export default function Pricing() {
+  const [isBetaFormOpen, setIsBetaFormOpen] = useState(false);
+
   return (
     <div className="bg-surface min-h-screen">
       <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -117,6 +117,7 @@ export default function Pricing() {
               <Button
                 variant={plan.buttonVariant}
                 className="w-full py-3 rounded-full font-medium"
+                onClick={() => setIsBetaFormOpen(true)}
               >
                 {plan.buttonText}
               </Button>
@@ -139,6 +140,12 @@ export default function Pricing() {
           </Button>
         </div> */}
       </section>
+
+      {/* Closed Beta Form Modal */}
+      <ClosedBetaForm 
+        isOpen={isBetaFormOpen} 
+        onClose={() => setIsBetaFormOpen(false)} 
+      />
     </div>
   );
 } 
