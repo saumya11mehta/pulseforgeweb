@@ -68,6 +68,12 @@ export default function ClosedBetaForm({ isOpen, onClose }: ClosedBetaFormProps)
         }
       );
       setSubmitSuccess(true);
+      // Reset form after successful submission
+      setFormState({
+        name: '',
+        email: '',
+        deviceType: 'android',
+      });
     } catch {
       setSubmitError('Failed to submit application. Please try again later.');
     } finally {
