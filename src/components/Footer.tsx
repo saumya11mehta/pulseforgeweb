@@ -18,11 +18,12 @@ const Footer = () => {
                 className="h-10 w-10"
               />
               <Image
-                src="/logo text.svg"
+                src="/logo-text.svg"
                 alt="PulseForge"
                 width={120}
                 height={20}
-                className="ml-2 h-auto"
+                style={{ width: 'auto' }}
+                className="ml-2 h-5"
               />
             </div>
             <p className="mt-4 text-primary-on/70 max-w-md">

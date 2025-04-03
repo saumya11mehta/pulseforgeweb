@@ -27,20 +27,26 @@ const Header = () => {
                 height={50}
                 className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16"
               />
-              <Image
-                src="/logo text.svg"
-                alt="PulseForge"
-                width={150}
-                height={25}
-                className="ml-1 h-auto w-24 sm:w-28 md:w-32 lg:w-40"
-              />
             </Link>
+            <Link href="/" className="flex items-center">
+              <Image
+                  src="/logo-text.svg"
+                  alt="PulseForge"
+                  width={150}
+                  height={25}
+                  style={{ width: 'auto' }}
+                  className="ml-1 h-5 sm:h-6 md:h-7 lg:h-8"
+                />
+              </Link>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <Link href="/features" className="text-primary-on font-medium">
               Features
+            </Link>
+            <Link href="/about" className="text-primary-on font-medium">
+              About Us
             </Link>
             <Link href="/pricing" className="text-primary-on font-medium">
               Pricing
@@ -88,10 +94,11 @@ const Header = () => {
                   className="h-10 w-10"
                 />
                 <Image
-                  src="/logo text.svg"
+                  src="/logo-text.svg"
                   alt="PulseForge"
                   width={120}
                   height={20}
+                  style={{ width: 'auto' }}
                   className="ml-2 h-6"
                 />
               </Link>
@@ -110,6 +117,13 @@ const Header = () => {
                 onClick={toggleMenu}
               >
                 Features
+              </Link>
+              <Link 
+                href="/about" 
+                className="block text-lg text-primary-on font-medium py-2"
+                onClick={toggleMenu}
+              >
+                About Us
               </Link>
               <Link 
                 href="/pricing" 

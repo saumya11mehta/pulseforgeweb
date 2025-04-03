@@ -1,16 +1,23 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import Image from "next/image";
 import Button from '@/components/Button';
 import Card from '@/components/Card';
 import { FaChartBar, FaCalendarAlt, FaBullseye } from "react-icons/fa";
 import { GiWeightLiftingUp } from "react-icons/gi";
-import ClosedBetaForm from '@/components/ClosedBetaForm';
 import { useState } from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+
+// Dynamically import non-critical components
+const ClosedBetaForm = dynamic(() => import('@/components/ClosedBetaForm'), {
+  loading: () => <p>Loading...</p>,
+  ssr: false
+});
 
 export default function Home() {
   const [isBetaFormOpen, setIsBetaFormOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <>
@@ -34,14 +41,13 @@ export default function Home() {
                 >
                   Apply for Closed Beta
                 </Button>
-                <Link href="/features">
-                  <Button
-                    variant="primary"
-                    className="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-primary-on"
-                  >
-                    Learn More
-                  </Button>
-                </Link>
+                <Button
+                  variant="primary"
+                  className="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-primary-on"
+                  onClick={() => router.push('/features')}
+                >
+                  Learn More
+                </Button>
               </div>
             </div>
             <div className="md:w-1/2 flex justify-center">
@@ -50,6 +56,7 @@ export default function Home() {
                   src="/screenshots/login-portrait.png"
                   alt="PulseForge App Screenshot"
                   fill
+                  sizes="(max-width: 768px) 256px, 288px"
                   className="object-contain"
                   priority
                 />
@@ -88,62 +95,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      {/* <section className="py-20 bg-surface">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-surface-on">
-              What Our Users Say
-            </h2>
-            <p className="mt-4 text-lg text-surface-on-variant">
-              Thousands of fitness enthusiasts trust PulseForge for their workout tracking needs.
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <Card 
-                key={index} 
-                className="p-8 border border-outline"
-              >
-                <div className="flex items-center mb-4">
-                  <div className="flex text-primary">
-                    {[...Array(5)].map((_, i) => (
-                      <span key={i}>★</span>
-                    ))}
-                  </div>
-                </div>
-                <p className="text-surface-on-variant mb-6">&ldquo;{testimonial.text}&rdquo;</p>
-                <div className="flex items-center">
-                  <div className="w-10 h-10 bg-surface rounded-full overflow-hidden">
-                    <Image
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      width={40}
-                      height={40}
-                    />
-                  </div>
-                  <div className="ml-3">
-                    <h4 className="font-medium text-surface-on">{testimonial.name}</h4>
-                    <p className="text-sm text-surface-on-variant">{testimonial.title}</p>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
-      {/* CTA Section */}
-      <section className="py-20 from-primary/50 to-primary bg-gradient-to-b text-primary-on">
+      {/* Call to Action */}
+      <section className="py-20 bg-surface">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold">Ready to Transform Your Workouts?</h2>
-          <p className="mt-4 text-xl text-primary-on/80 max-w-2xl mx-auto">
-            Join thousands of fitness enthusiasts who have taken their training to the next level with PulseForge.
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-surface-on">
+            Ready to transform your fitness journey?
+          </h2>
+          <p className="text-lg mb-8 max-w-2xl mx-auto text-surface-on-variant">
+            Join the closed beta program today and be among the first to experience the future of workout tracking.
           </p>
           <Button
             variant="primary"
-            className="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-primary-on mt-8"
+            className="px-8 py-3 rounded-full inline-flex items-center justify-center"
             onClick={() => setIsBetaFormOpen(true)}
           >
             Apply for Closed Beta
@@ -152,34 +116,37 @@ export default function Home() {
       </section>
 
       {/* Closed Beta Form Modal */}
-      <ClosedBetaForm 
-        isOpen={isBetaFormOpen} 
-        onClose={() => setIsBetaFormOpen(false)} 
-      />
+      {isBetaFormOpen && (
+        <ClosedBetaForm 
+          isOpen={isBetaFormOpen} 
+          onClose={() => setIsBetaFormOpen(false)} 
+        />
+      )}
     </>
   );
 }
 
+// Features data
 const features = [
   {
-    icon: <FaChartBar size={24} className="text-primary" />,
-    title: 'Advanced Analytics',
-    description: 'Track your progress with detailed charts and insights that help you understand your performance over time.',
+    title: "Comprehensive Tracking",
+    description: "Track every aspect of your workout: sets, reps, weights, rest time, and even your personal notes.",
+    icon: <GiWeightLiftingUp className="w-6 h-6 text-primary" />,
   },
   {
-    icon: <FaCalendarAlt size={24} className="text-primary" />,
-    title: 'Workout Planning',
-    description: 'Plan your workouts in advance with our intuitive calendar and scheduling tools.',
+    title: "Detailed Analytics",
+    description: "Get insights into your performance with visual representations of your progress over time.",
+    icon: <FaChartBar className="w-6 h-6 text-primary" />,
   },
   {
-    icon: <FaBullseye size={24} className="text-primary" />,
-    title: 'Goal Setting',
-    description: 'Set personalized fitness goals and track your journey to achieving them.',
+    title: "Workout Planning",
+    description: "Plan your workouts in advance and follow structured routines tailored to your goals.",
+    icon: <FaCalendarAlt className="w-6 h-6 text-primary" />,
   },
   {
-    icon: <GiWeightLiftingUp size={24} className="text-primary" />,
-    title: 'Detailed Exercise Library',
-    description: 'Access a comprehensive library of exercises with proper form instructions.',
+    title: "Goal Setting",
+    description: "Set measurable fitness goals and track your journey toward achieving them.",
+    icon: <FaBullseye className="w-6 h-6 text-primary" />,
   },
 ];
 
