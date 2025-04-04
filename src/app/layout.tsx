@@ -32,6 +32,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://pulseforgeapp.com",
   },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
     type: "website",
     url: "https://pulseforgeapp.com",
