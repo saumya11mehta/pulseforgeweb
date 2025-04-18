@@ -25,18 +25,18 @@ export default function Home() {
                 Monitor progress, analyze performance, and stay motivated.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                <a href="https://play.google.com/store/apps/details?id=com.eternal.pulseforge" target="_blank" rel="noopener noreferrer">
+                <a href="https://play.google.com/store/apps/details?id=com.eternal.pulseforge" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto flex justify-center sm:justify-start">
                   <Image 
                     src="/play/GetItOnGooglePlay_Badge_Web_color_English.png"
                     alt="Get it on Google Play"
                     width={200}
                     height={60}
-                    className="object-contain"
+                    className="w-full max-w-[280px] h-auto sm:w-[200px]"
                   />
                 </a>
                 <Button
                   variant="primary"
-                  className="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-primary-on"
+                  className="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-primary-on w-full sm:w-auto"
                   onClick={() => router.push('/features')}
                 >
                   Learn More
@@ -98,13 +98,13 @@ export default function Home() {
           <p className="text-lg mb-8 max-w-2xl mx-auto text-surface-on-variant">
             Download PulseForge today and experience the future of workout tracking.
           </p>
-          <a href="https://play.google.com/store/apps/details?id=com.eternal.pulseforge" target="_blank" rel="noopener noreferrer" className="inline-block">
+          <a href="https://play.google.com/store/apps/details?id=com.eternal.pulseforge" target="_blank" rel="noopener noreferrer" className="inline-block w-full max-w-xs">
             <Image 
               src="/play/GetItOnGooglePlay_Badge_Web_color_English.png"
               alt="Get it on Google Play"
               width={240}
               height={70}
-              className="object-contain"
+              className="object-contain w-full"
             />
           </a>
         </div>
