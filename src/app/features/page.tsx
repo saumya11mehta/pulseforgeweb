@@ -1,31 +1,28 @@
 'use client';
 
 import Image from 'next/image';
-import Button from '@/components/Button';
-import ClosedBetaForm from '@/components/ClosedBetaForm';
-import { useState } from 'react';
 // import Card from '../../components/Card';
 
 export default function Features() {
-  const [isBetaFormOpen, setIsBetaFormOpen] = useState(false);
-
   return (
     <>
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary to-secondary text-primary-on py-12 md:py-16 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4">Powerful Features</h1>
-          <p className="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto px-2">
+          <p className="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto px-2 mb-8">
             Discover all the ways PulseForge helps you track, optimize, and elevate your fitness journey.
           </p>
-          <div className="mt-8">
-            <Button
-              variant="primary"
-              className="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-primary-on"
-              onClick={() => setIsBetaFormOpen(true)}
-            >
-              Apply for Closed Beta
-            </Button>
+          <div className="flex justify-center">
+            <a href="https://play.google.com/store/apps/details?id=com.eternal.pulseforge" target="_blank" rel="noopener noreferrer">
+              <Image 
+                src="/play/GetItOnGooglePlay_Badge_Web_color_English.png"
+                alt="Get it on Google Play"
+                width={220}
+                height={65}
+                className="object-contain"
+              />
+            </a>
           </div>
         </div>
       </section>
@@ -95,12 +92,6 @@ export default function Features() {
           </div>
         </div>
       </section> */}
-
-      {/* Closed Beta Form Modal */}
-      <ClosedBetaForm 
-        isOpen={isBetaFormOpen} 
-        onClose={() => setIsBetaFormOpen(false)} 
-      />
     </>
   );
 }

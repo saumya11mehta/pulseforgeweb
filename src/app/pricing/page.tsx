@@ -1,10 +1,8 @@
 'use client';
 
 import Card from "@/components/Card";
-import Button from "@/components/Button";
 import { CheckIcon } from "@heroicons/react/24/outline";
-import ClosedBetaForm from '@/components/ClosedBetaForm';
-import { useState } from 'react';
+import Button from "@/components/Button";
 
 const plans = [
   {
@@ -17,7 +15,6 @@ const plans = [
       "Personal records tracking",
       "In-depth analytics with graphs",
     ],
-    buttonText: "Apply for Beta",
     isPopular: false,
     buttonVariant: "secondary" as const
   },
@@ -33,7 +30,6 @@ const plans = [
       "In-depth analytics with graphs",
       "No ads",
     ],
-    buttonText: "Apply for Beta",
     isPopular: true,
     buttonVariant: "primary" as const
   },
@@ -57,8 +53,6 @@ const plans = [
 ];
 
 export default function Pricing() {
-  const [isBetaFormOpen, setIsBetaFormOpen] = useState(false);
-
   return (
     <div className="bg-surface min-h-screen">
       <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -114,13 +108,19 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <Button
-                variant={plan.buttonVariant}
-                className="w-full py-3 rounded-full font-medium"
-                onClick={() => setIsBetaFormOpen(true)}
+              <a 
+                href="https://play.google.com/store/apps/details?id=com.eternal.pulseforge" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-full"
               >
-                {plan.buttonText}
-              </Button>
+                <Button
+                  variant={plan.buttonVariant}
+                  className="w-full py-3 rounded-full font-medium"
+                >
+                  Download Now
+                </Button>
+              </a>
             </Card>
           ))}
         </div>
@@ -140,12 +140,6 @@ export default function Pricing() {
           </Button>
         </div> */}
       </section>
-
-      {/* Closed Beta Form Modal */}
-      <ClosedBetaForm 
-        isOpen={isBetaFormOpen} 
-        onClose={() => setIsBetaFormOpen(false)} 
-      />
     </div>
   );
 } 

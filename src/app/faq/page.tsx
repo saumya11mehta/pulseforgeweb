@@ -2,8 +2,7 @@
 
 import Card from "@/components/Card";
 import Button from "@/components/Button";
-import ClosedBetaForm from '@/components/ClosedBetaForm';
-import { useState } from 'react';
+import Image from "next/image";
 
 const faqs = [
   {
@@ -33,8 +32,6 @@ const faqs = [
 ];
 
 export default function FAQ() {
-  const [isBetaFormOpen, setIsBetaFormOpen] = useState(false);
-
   return (
     <div className="bg-background min-h-screen">
       <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -65,7 +62,7 @@ export default function FAQ() {
             Still have questions?
           </h2>
           <p className="text-surface-on-variant mb-8 max-w-2xl mx-auto">
-            If you couldn&apos;t find the answer to your question, feel free to contact our support team.
+            If you couldn&apos;t find the answer to your question, feel free to contact our support team or download the app today.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button 
@@ -74,22 +71,23 @@ export default function FAQ() {
             >
               Contact Support
             </Button>
-            <Button 
-              variant="secondary"
-              className="inline-flex items-center justify-center px-8 py-3 rounded-full shadow-lg"
-              onClick={() => setIsBetaFormOpen(true)}
+            <a 
+              href="https://play.google.com/store/apps/details?id=com.eternal.pulseforge" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-block"
             >
-              Apply for Closed Beta
-            </Button>
+              <Image 
+                src="/play/GetItOnGooglePlay_Badge_Web_color_English.png"
+                alt="Get it on Google Play"
+                width={200}
+                height={60}
+                className="object-contain"
+              />
+            </a>
           </div>
         </div>
       </section>
-
-      {/* Closed Beta Form Modal */}
-      <ClosedBetaForm 
-        isOpen={isBetaFormOpen} 
-        onClose={() => setIsBetaFormOpen(false)} 
-      />
     </div>
   );
 } 

@@ -1,22 +1,13 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import Image from "next/image";
 import Button from '@/components/Button';
 import Card from '@/components/Card';
 import { FaChartBar, FaCalendarAlt, FaBullseye } from "react-icons/fa";
 import { GiWeightLiftingUp } from "react-icons/gi";
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-// Dynamically import non-critical components
-const ClosedBetaForm = dynamic(() => import('@/components/ClosedBetaForm'), {
-  loading: () => <p>Loading...</p>,
-  ssr: false
-});
-
 export default function Home() {
-  const [isBetaFormOpen, setIsBetaFormOpen] = useState(false);
   const router = useRouter();
 
   return (
@@ -34,13 +25,15 @@ export default function Home() {
                 Monitor progress, analyze performance, and stay motivated.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                <Button
-                  variant="primary"
-                  className="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-primary-on"
-                  onClick={() => setIsBetaFormOpen(true)}
-                >
-                  Apply for Closed Beta
-                </Button>
+                <a href="https://play.google.com/store/apps/details?id=com.eternal.pulseforge" target="_blank" rel="noopener noreferrer">
+                  <Image 
+                    src="/play/GetItOnGooglePlay_Badge_Web_color_English.png"
+                    alt="Get it on Google Play"
+                    width={200}
+                    height={60}
+                    className="object-contain"
+                  />
+                </a>
                 <Button
                   variant="primary"
                   className="inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-primary-on"
@@ -103,25 +96,19 @@ export default function Home() {
             Ready to transform your fitness journey?
           </h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto text-surface-on-variant">
-            Join the closed beta program today and be among the first to experience the future of workout tracking.
+            Download PulseForge today and experience the future of workout tracking.
           </p>
-          <Button
-            variant="primary"
-            className="px-8 py-3 rounded-full inline-flex items-center justify-center"
-            onClick={() => setIsBetaFormOpen(true)}
-          >
-            Apply for Closed Beta
-          </Button>
+          <a href="https://play.google.com/store/apps/details?id=com.eternal.pulseforge" target="_blank" rel="noopener noreferrer" className="inline-block">
+            <Image 
+              src="/play/GetItOnGooglePlay_Badge_Web_color_English.png"
+              alt="Get it on Google Play"
+              width={240}
+              height={70}
+              className="object-contain"
+            />
+          </a>
         </div>
       </section>
-
-      {/* Closed Beta Form Modal */}
-      {isBetaFormOpen && (
-        <ClosedBetaForm 
-          isOpen={isBetaFormOpen} 
-          onClose={() => setIsBetaFormOpen(false)} 
-        />
-      )}
     </>
   );
 }
