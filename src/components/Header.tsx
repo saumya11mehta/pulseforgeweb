@@ -2,15 +2,26 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handlePrivacyLinkClick = () => {
+    if (isMenuOpen) {
+      toggleMenu();
+    }
   };
 
   return (
@@ -54,9 +65,17 @@ const Header = () => {
             <Link href="/faq" className="text-primary-on font-medium">
               FAQ
             </Link>
-            <Link href="/privacy-policy" className="text-primary-on font-medium">
-              Privacy Policy
-            </Link>
+            {isMounted && (
+              <a 
+                href="https://www.pulseforgeapp.com/privacy-policy" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-primary-on font-medium"
+                aria-label="Privacy Policy (opens in a new tab)"
+              >
+                Privacy Policy
+              </a>
+            )}
             <ThemeToggle />
           </nav>
 
@@ -139,13 +158,18 @@ const Header = () => {
               >
                 FAQ
               </Link>
-              <Link 
-                href="/privacy-policy" 
-                className="block text-lg text-primary-on font-medium py-2"
-                onClick={toggleMenu}
-              >
-                Privacy Policy
-              </Link>
+              {isMounted && (
+                <a 
+                  href="https://www.pulseforgeapp.com/privacy-policy" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="block text-lg text-primary-on font-medium py-2"
+                  aria-label="Privacy Policy (opens in a new tab)"
+                  onClick={handlePrivacyLinkClick}
+                >
+                  Privacy Policy
+                </a>
+              )}
             </nav>
             <div className="p-4 border-t border-primary-on/20">
               <ThemeToggle />

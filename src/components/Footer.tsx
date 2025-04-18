@@ -1,8 +1,17 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { FiInstagram, FiTwitter, FiFacebook, FiYoutube } from 'react-icons/fi';
+import { useState, useEffect } from 'react';
 
 const Footer = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <footer className="bg-primary text-primary-on">
       <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
@@ -73,9 +82,17 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/privacy-policy" className="text-primary-on/70 hover:text-primary-on transition-colors">
-                  Privacy Policy
-                </Link>
+                {isMounted && (
+                  <a 
+                    href="https://www.pulseforgeapp.com/privacy-policy" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-primary-on/70 hover:text-primary-on transition-colors"
+                    aria-label="Privacy Policy (opens in a new tab)"
+                  >
+                    Privacy Policy
+                  </a>
+                )}
               </li>
             </ul>
           </div>
