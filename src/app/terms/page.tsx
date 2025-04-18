@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 
 export default function TermsOfService() {
   const currentDate = new Date().toLocaleDateString('en-US', {
@@ -73,9 +74,9 @@ export default function TermsOfService() {
               <p>
                 Your privacy is important to us. Our collection and use of personal information is governed by 
                 our Privacy Policy, available at{' '}
-                <a href="https://pulseforgeapp.com/privacy-policy" className="text-primary hover:underline">
+                <Link href="/privacy-policy" className="text-primary hover:underline">
                   https://pulseforgeapp.com/privacy-policy
-                </a>.
+                </Link>.
               </p>
             </section>
 
