@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { FiInstagram, FiTwitter, FiFacebook, FiYoutube } from 'react-icons/fi';
+import { FiInstagram } from 'react-icons/fi';
+import { SiDiscord } from 'react-icons/si';
 import { useState, useEffect } from 'react';
 
 const Footer = () => {
@@ -40,17 +41,11 @@ const Footer = () => {
               The most comprehensive workout tracking application available on Google Play Store.
             </p>
             <div className="flex space-x-4 mt-6">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-primary-on transition-colors">
+              <a href="https://www.instagram.com/pulseforgeapp/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-primary-on transition-colors">
                 <FiInstagram className="h-6 w-6" />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-primary-on transition-colors">
-                <FiTwitter className="h-6 w-6" />
-              </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-primary-on transition-colors">
-                <FiFacebook className="h-6 w-6" />
-              </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-primary-on transition-colors">
-                <FiYoutube className="h-6 w-6" />
+              <a href="https://discord.gg/9GhpQ9b4Ep" target="_blank" rel="noopener noreferrer" aria-label="Discord" className="hover:text-primary-on transition-colors">
+                <SiDiscord className="h-6 w-6" />
               </a>
             </div>
           </div>
